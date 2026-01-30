@@ -1,26 +1,14 @@
 ---
 import "../styles/global.css";
 import { Button } from "@/components/ui/button";
+import MainLayout from "@/layouts/MainLayout.astro";
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Blogbuster</title>
-    </head>
-
-    <body>
-        <div
-            class="grid place-items-center h-screen content-center bg-background font-sans"
+<MainLayout content={{ title: "Blogbuster" }}>
+    <div class="grid place-items-center h-screen content-center">
+        <Button>ShadCn Button in Astro!</Button>
+        <a href="/markdown-page" class="p-4 underline"
+            >Markdown is also supported...</a
         >
-            <Button>ShadCn Button in Astro!</Button>
-            <a href="/markdown-page" class="p-4 underline"
-                >Markdown is also supported...</a
-            >
-        </div>
-    </body>
-</html>
+    </div>
+</MainLayout>
