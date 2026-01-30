@@ -3,7 +3,7 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { Mailbox } from "lucide-react";
+import { BookOpen, Mailbox, NotebookPen, PenIcon } from "lucide-react";
 
 const navLinks = [
     {
@@ -25,10 +25,18 @@ function Navigation() {
             >
                 <Mailbox size={50} /> <span>Blogbuster</span>
             </a>
-            <NavigationMenuList>
+            <NavigationMenuList className="gap-8">
                 {navLinks.map((item) => (
-                    <NavigationMenuLink asChild>
-                        <a href={item.link}>{item.name}</a>
+                    <NavigationMenuLink
+                        className="hover:text-black items-center gap-2 flex-row hover:shadow px-4 py-2 rounded-full"
+                        href={item.link}
+                    >
+                        {item.name === "Read" ? (
+                            <BookOpen className="size-6" />
+                        ) : (
+                            <NotebookPen className="size-6" />
+                        )}
+                        <span className="text-xl">{item.name}</span>
                     </NavigationMenuLink>
                 ))}
             </NavigationMenuList>
