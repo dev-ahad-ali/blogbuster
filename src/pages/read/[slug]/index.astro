@@ -8,8 +8,9 @@ export const getStaticPaths = (() => {
         },
     ];
 }) satisfies GetStaticPaths;
+const { slug } = Astro.params;
 ---
 
-<MainLayout content={{ title: "1" }}>
-    <h2>Blog details page</h2>
+<MainLayout content={{ title: slug }}>
+    <h2>Blog details page: {slug}</h2>
 </MainLayout>
