@@ -1,0 +1,15 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import type { GetStaticPaths } from "astro";
+export const getStaticPaths = (() => {
+    return [
+        {
+            params: { slug: "1" },
+        },
+    ];
+}) satisfies GetStaticPaths;
+---
+
+<MainLayout content={{ title: "1" }}>
+    <h2>Blog details page</h2>
+</MainLayout>
