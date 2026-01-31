@@ -30,6 +30,7 @@ function Navigation() {
                     <NavigationMenuLink
                         className="hover:text-black items-center gap-2 flex-row hover:shadow px-4 py-2 rounded-full"
                         href={item.link}
+                        key={item.link}
                     >
                         {item.name === "Read" ? (
                             <BookOpen className="size-6" />
