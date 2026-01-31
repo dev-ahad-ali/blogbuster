@@ -1,14 +1,16 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import { getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
-export const getStaticPaths = (() => {
-    return [
-        {
-            params: { slug: "1" },
-        },
-    ];
-}) satisfies GetStaticPaths;
-const { slug } = Astro.params;
+export async function getStaticPaths(): Promise<GetStaticPaths> {
+    const blogs = await getCollection("blog");
+
+    return blogs.map((blog) => ({
+        params: { slug: "1" },
+        blog,
+    }));
+}
+const { slug, blog } = Astro.params;
 ---
 
 <MainLayout content={{ title: slug }}>
