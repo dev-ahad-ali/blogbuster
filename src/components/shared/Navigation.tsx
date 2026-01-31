@@ -4,6 +4,7 @@ import {
     NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { BookOpen, Mailbox, NotebookPen, PenIcon } from "lucide-react";
+import ThemeToggle from "./ThemeToggler";
 
 const navLinks = [
     {
@@ -41,9 +42,7 @@ function Navigation() {
                     </NavigationMenuLink>
                 ))}
             </NavigationMenuList>
-            <div>
-                <p>Theme toggle</p>
-            </div>
+            <ThemeToggle />
         </NavigationMenu>
     );
 }
