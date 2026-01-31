@@ -1,7 +1,7 @@
 function ThemeToggle() {
     return (
         <button
-            className="bg-gray-200 rounded-full p-2 text-gray-600 hover:bg-gray-300 cursor-pointer"
+            className="bg-accent rounded-full p-2 text-gray-600 hover:bg-gray-300 cursor-pointer"
             type="button"
         >
             <svg
