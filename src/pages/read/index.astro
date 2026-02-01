@@ -4,18 +4,20 @@ import { getCollection } from "astro:content";
 const blogs = await getCollection("blog");
 import type { BlogPost } from "@/types/blog";
 import TagSidebar from "@/components/TagSidebar.astro";
+import BlogCard from "@/components/cards/BlogCard.astro";
 ---
 
 <MainLayout content={{ title: "Read | Blogbuster" }}>
     <div class="flex gap-2">
         <TagSidebar />
 
-        <ul>
+        <ul class="h-[700px] overflow-y-scroll">
             {
                 blogs.map((blog: BlogPost) => (
                     <li>
                         <a href={`/read/${blog.id}`}>
                             {blog.data.title} : {blog.id}
+                            <BlogCard />
                         </a>
                     </li>
                 ))
