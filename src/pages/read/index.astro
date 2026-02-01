@@ -2,19 +2,17 @@
 import MainLayout from "@/layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 const blogs = await getCollection("blog");
-import type { Blog } from "@/types/blog";
+import type { BlogPost } from "@/types/blog";
 ---
 
 <MainLayout content={{ title: "Read | Blogbuster" }}>
     <h2>Read Page</h2>
     <ul>
         {
-            blogs.map(({ data: blog }: { data: Blog }) => (
+            blogs.map((blog: BlogPost) => (
                 <li>
-                    <a
-                        href={`/read/${blog.title.toLowerCase().split(" ").join("-")}`}
-                    >
-                        {blog.title}
+                    <a href={`/read/${blog.id}`}>
+                        {blog.data.title} : {blog.id}
                     </a>
                 </li>
             ))
