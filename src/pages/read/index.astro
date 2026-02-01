@@ -3,19 +3,23 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 const blogs = await getCollection("blog");
 import type { BlogPost } from "@/types/blog";
+import TagSidebar from "@/components/TagSidebar.astro";
 ---
 
 <MainLayout content={{ title: "Read | Blogbuster" }}>
-    <h2>Read Page</h2>
-    <ul>
-        {
-            blogs.map((blog: BlogPost) => (
-                <li>
-                    <a href={`/read/${blog.id}`}>
-                        {blog.data.title} : {blog.id}
-                    </a>
-                </li>
-            ))
-        }
-    </ul>
+    <div class="flex gap-2">
+        <TagSidebar />
+
+        <ul>
+            {
+                blogs.map((blog: BlogPost) => (
+                    <li>
+                        <a href={`/read/${blog.id}`}>
+                            {blog.data.title} : {blog.id}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
 </MainLayout>
