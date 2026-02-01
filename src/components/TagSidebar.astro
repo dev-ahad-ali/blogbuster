@@ -1,7 +1,28 @@
 ---
+import { getCollection } from "astro:content";
 import { TagButton } from "./TagButton";
+import type { BlogPost } from "@/types/blog";
+
+async function getTags() {
+    const blogs = await getCollection("blog");
+    const uniqueTags: string[] = [];
+
+    blogs
+        .map((blog: BlogPost) => blog.data.tags)
+        .flat()
+        .forEach((tag: string) => {
+            if (!uniqueTags.includes(tag)) {
+                uniqueTags.push(tag);
+            }
+        });
+
+    return uniqueTags;
+}
+
+const tags = await getTags();
+console.log(tags);
 ---
 
-<div class="flex flex-wrap border-r">
-    <TagButton client:load>All</TagButton>
+<div class="flex flex-wrap border-r max-w-2xs gap-2">
+    {tags.map((tag) => <TagButton client:load>{tag}</TagButton>)}
 </div>
